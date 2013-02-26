@@ -1,0 +1,8 @@
+(ns clojure.gdx.myscreen
+  (:import (com.badlogic.gdx Gdx Screen)))
+
+(defn screen []
+  (proxy [Screen] []
+    (show [])
+    (render [delta])))
+

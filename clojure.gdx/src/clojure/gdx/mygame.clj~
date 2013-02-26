@@ -1,0 +1,9 @@
+(ns clojure.gdx.mygame
+  (:import (com.badlogic.gdx Game Screen Gdx))
+  (gen-class
+   :name MyGame
+   :extends com.badlogic.gdx.Game)
+  (require (clojure-gdx [myscreen :as myscreen])))
+
+(defn -create [^Game this]
+  (.setScreen this (myscreen/screen)))
