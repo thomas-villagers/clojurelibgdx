@@ -1,9 +1,0 @@
-(ns clojure.gdx.core
-  (:import (com.badlogic.gdx Game)
-           (com.badlogic.gdx.backends.lwjgl LwjglApplication)))
-
-(defn App[]
-  (LwjglApplication. (clojure.gdx.mygame.MyGame. ) "Hello Clojure" 1280 800 true))
-
-(App)
-
