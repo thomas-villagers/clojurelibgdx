@@ -3,56 +3,59 @@ clojurelibgdx
 
 A minimal Clojure LibGDX project template 
 
-TODO: - write proper readme
+You need Leiningen (http://leiningen.org/) and LibGDX (http://libgdx.badlogicgames.com/).
+I use Leiningen 2.0, but with some modifications it should work with 1.x as well. 
 
-Create an android project:
+Create an Android project:
 
-android create project --target 8 --name GDXClojure --path . --activity LibGDXActivity --package com.friendlyvillagers.gdxclojure
+    android create project --target 8 --name GDXClojure --path . --activity LibGDXActivity --package com.friendlyvillagers.gdxclojure
 
 Create a Clojure project:
 
-lein new app clojure.gdx
+    lein new app clojure.gdx
 
-edit project.clj; add gdx dependencies:
+Edit project.clj; add gdx dependencies:
 
-[com.badlogic.gdx/gdx "0.9.7"]
-[com.badlogic.gdx/gdx-natives "0.9.7"]
-[com.badlogic.gdx/gdx-backend-lwjgl "0.9.7"]
-[com.badlogic.gdx/gdx-backend-lwjgl-natives "0.9.7"]
+    [com.badlogic.gdx/gdx "0.9.7"]
+    [com.badlogic.gdx/gdx-natives "0.9.7"]
+    [com.badlogic.gdx/gdx-backend-lwjgl "0.9.7"]
+    [com.badlogic.gdx/gdx-backend-lwjgl-natives "0.9.7"]
 
-the jars need to be in your local repository (something like ~/home/.m2/com/badlogic/gdx/gdx.jar); there is a command to do this -- sorry, I forgot. 
+The jars need to be in your local repository (something like ~/home/.m2/com/badlogic/gdx/gdx.jar; there is a command to do this -- sorry, I can't remember). 
 
 Now, fire up a repl:
 
-lein repl
+    lein repl
 
 Let's test if the gdx jars are there:
 
-=> (com.badlogic.gdx.math.Vector2.)
-#<Vector2> [0.0:0.0]>
+    => (com.badlogic.gdx.math.Vector2.)
+    #<Vector2> [0.0:0.0]>
 
 Write your game! 
-Your Desktop Application is clojure/gdx/core.clj
+Your Desktop Application is in src/clojure/gdx/core.clj
 Run it: 
 
-lein run
+    lein run
 
 or 
 
-lein repl 
+    lein repl 
 
-When ready to test your code on Android, create the jar file:
+When you're ready to test your code on Android, create the jar file:
 
-lein jar
-Created /home/thomas/dev/clojure/droid-gdx/clojure.gdx/target/clojure.gdx-0.1.0-SNAPSHOT.jar
+    lein jar
+    Created /home/thomas/dev/clojure/droid-gdx/clojure.gdx/target/clojure.gdx-0.1.0-SNAPSHOT.jar
 
 Link that jar to your Android project's lib folder. 
 Add the gdx jar files and clojure.jar to your Android project's lib folder. 
 
-The class "MyGame" is the interface between your Java written Android activity and your clojure code (see LibGDXActivity.java). 
+The class "MyGame" is the interface between your Java-written Android activity and your Clojure code (see LibGDXActivity.java). 
 
 From your android project folder, build app:
 
-ant debug
+    ant debug
 
-
+As an alternative, you could use NEKO or Lein Droid (https://github.com/alexander-yakushev/lein-droid). 
+I would prefer Lein Droid as it allows you to strip unused stuff from your clojure.jar and simplifies using propguard. 
+However, I had some trouble building complex projects with Lein Droid so I came up with this simple method. 
