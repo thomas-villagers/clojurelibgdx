@@ -8,4 +8,5 @@
                  [com.badlogic.gdx/gdx-natives "0.9.7"]
                  [com.badlogic.gdx/gdx-backend-lwjgl "0.9.7"]
                  [com.badlogic.gdx/gdx-backend-lwjgl-natives "0.9.7"]]
-  :main clojure.gdx.core)
+  :main clojure.gdx.core
+  :aot [clojure.gdx.MyGame])

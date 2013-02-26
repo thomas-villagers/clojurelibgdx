@@ -3,6 +3,7 @@
   (:require (clojure.gdx [myscreen :as myscreen])))
 
 (gen-class
+ :name clojure.gdx.MyGame
  :extends com.badlogic.gdx.Game)
  
 (defn -create [^Game this]
