@@ -21,7 +21,11 @@ Edit project.clj; add gdx dependencies:
     [com.badlogic.gdx/gdx-backend-lwjgl "0.9.7"]
     [com.badlogic.gdx/gdx-backend-lwjgl-natives "0.9.7"]
 
-The jars need to be in your local repository (something like ~/home/.m2/com/badlogic/gdx/gdx.jar; there is a command to do this -- sorry, I can't remember). 
+The jars need to be in your local repository (something like ~/home/.m2/com/badlogic/gdx/gdx.jar;). 
+
+If mvn is installed you can do this like so (repeat for gdx-natives etc.): 
+
+    mvn install:install-file -Dfile=libs/gdx.jar -DgroupId=com.badlogic.gdx -DartifactId=gdx -Dversion=0.9.7 -Dpackaging=jar
 
 Now, fire up a repl:
 
