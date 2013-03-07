@@ -21,11 +21,20 @@ Edit project.clj; add gdx dependencies:
     [com.badlogic.gdx/gdx-backend-lwjgl "0.9.7"]
     [com.badlogic.gdx/gdx-backend-lwjgl-natives "0.9.7"]
 
-The jars need to be in your local repository (something like ~/home/.m2/com/badlogic/gdx/gdx.jar;). 
+The jars need to be in your local Maven repository (something like ~/home/.m2/com/badlogic/gdx/gdx.jar;). 
 
 If mvn is installed you can do this like so (repeat for gdx-natives etc.): 
 
     mvn install:install-file -Dfile=libs/gdx.jar -DgroupId=com.badlogic.gdx -DartifactId=gdx -Dversion=0.9.7 -Dpackaging=jar
+
+Alternatively you can ask Leiningen to download the latest jars from the gdx repository (see https://code.google.com/p/libgdx/wiki/MavenProjectSetup). 
+To do this, add this line to project.clj:
+
+    :repositories [["libgdx" "http://libgdx.badlogicgames.com/nightlies/maven/"]]
+    
+and modify the dependencies, e.g.
+
+    [com.badlogic.gdx/gdx "0.9.9-SNAPSHOTS"]
 
 Now, fire up a repl:
 
@@ -61,5 +70,5 @@ From your android project folder, build app:
     ant debug
 
 As an alternative, you could use NEKO or Lein Droid (https://github.com/alexander-yakushev/lein-droid). 
-I would prefer Lein Droid as it allows you to strip unused stuff from your clojure.jar and simplifies using propguard. 
+I would prefer Lein Droid as it allows you to strip unused stuff from your clojure.jar and simplifies using proguard. 
 However, I had some trouble building complex projects with Lein Droid so I came up with this simple method. 
