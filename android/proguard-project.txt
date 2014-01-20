@@ -18,3 +18,94 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+#optimization & obfuscate don't work at the moment
+-dontoptimize
+-dontobfuscate
+
+#-optimizationpasses 5       
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+ 
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
+ 
+# http://stackoverflow.com/questions/4525661/android-proguard-cant-find-dynamically-referenced-class-javax-swing
+-dontwarn java.awt.**
+-dontnote java.awt.**
+-dontwarn com.badlogic.gdx.jnigen.**
+ -dontwarn com.badlogic.gdx.backends.android.*
+-dontwarn com.badlogic.gdx.backends.android.lwjgl.*
+-dontwarn sun.misc.*
+
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+-keep public class com.android.vending.licensing.ILicensingService
+ 
+-keepclasseswithmembernames class * {
+native <methods>;
+}
+ 
+-keepclasseswithmembers class * {
+public <init>(android.content.Context, android.util.AttributeSet);
+}
+ 
+-keepclasseswithmembers class * {
+public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+ 
+-keepclassmembers class * extends android.app.Activity {
+public void *(android.view.View);
+}
+ 
+-keepclassmembers enum * {
+public static **[] values();
+public static ** valueOf(java.lang.String);
+}
+ 
+-keep class * implements android.os.Parcelable {
+public static final android.os.Parcelable$Creator *;
+}
+
+-dontwarn clojure.inspector**,clojure.java.browse**,clojure.core$bean*
+-dontnote clojure.inspector**,clojure.java.browse**
+
+#-keep class clojure.** { *; }  # this works
+#-keep class clojure.* { *; }   # this too
+
+-keep class clojure.instant.* { *; }
+-keep class clojure.instant__init { *; }
+-keep class clojure.uuid.* { *; }
+-keep class clojure.uuid__init { *; }
+
+-keep class clojure.core__init { public static void load(); }
+-keep class clojure.core_proxy__init { public static void load(); }
+-keep class clojure.core_print__init { public static void load(); }
+-keep class clojure.genclass__init { public static void load(); }
+-keep class clojure.core_deftype__init { public static void load(); }
+-keep class clojure.core.protocols__init { public static void load(); }
+-keep class clojure.gvec__init { public static void load(); }
+-keep class clojure.java.io__init { public static void load(); }
+-keep class clojure.string__init { public static void load(); }
+
+# your classes
+-keep class clojure.gdx.MyGame__init {
+    public static void load();
+}
+-keep class clojure.gdx.MyGame {
+    public *;
+    public *** super*(...);
+}
+
+-keep class clojure.gdx.** { *; }
+
+-keep class com.badlogic.gdx.Screen { public static void load(); }
+
