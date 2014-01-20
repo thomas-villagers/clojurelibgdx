@@ -27,14 +27,10 @@ public class LibGDXActivity extends Activity {
 	      System.out.println("clojure.lang.RT not found!");
 	    }		
 	  Intent intent = new Intent(LibGDXActivity.this, GameActivity.class);
-	  startActivityForResult(intent,0);  
+	  intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	  startActivity(intent);  
+	  LibGDXActivity.this.finish();
 	}};
 	h.postDelayed(r,50);
   }  
-
- @Override
- protected void onActivityResult(int requestCode, int resultCode, Intent data)
-  {
-    finish();
-  }
 }
