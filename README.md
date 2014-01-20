@@ -88,5 +88,10 @@ If you don't want to use proguard, comment out this line
 
 in project.properties. 
     
+Add a Splash Screen
+===================
+ 
+Every Clojure App takes a while to load. To give a feedback you can open a separate activity with a splash screen while the Clojure RT is loading. To see how that can be done switch to the branch "with-splashscreen":
 
+    git checkout with-splashscreen
 
