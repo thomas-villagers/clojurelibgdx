@@ -72,3 +72,21 @@ From your android project folder, build app:
 As an alternative, you could use NEKO or Lein Droid (https://github.com/alexander-yakushev/lein-droid). 
 I would prefer Lein Droid as it allows you to strip unused stuff from your clojure.jar and simplifies using proguard. 
 However, I had some trouble building complex projects with Lein Droid so I came up with this simple method. 
+
+Proguard
+========
+
+Use proguard with
+
+    ant release
+
+Read proguard-project.txt to see how it's done. You'll need to modify proguard-project.txt for your own projects.  
+    
+If you don't want to use proguard, comment out this line
+
+    proguard.config=proguard-project.txt
+
+in project.properties. 
+    
+
+
