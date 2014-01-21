@@ -8,7 +8,6 @@ import android.view.Window;
 
 public class LibGDXActivity extends Activity {
 
-
  private class LoadClojureTask extends AsyncTask<Void, Void, Void> 
   {
     @Override
@@ -30,7 +29,6 @@ public class LibGDXActivity extends Activity {
       intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       startActivity(intent);
       LibGDXActivity.this.finish();
-     
     }
   }
 
